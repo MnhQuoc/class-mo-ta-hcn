@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô tả HCN</title>
+</head>
+
+<style>
+
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+<p id="dientich"></p>
+<p id="chuvi"></p>
+<p id="caccanh"></p>
+
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<script>
+    class Rectangle {
+        constructor(width, length) {
+
+            this.width = width;
+            this.length = length;
+
+        }
+        DienTich() {
+            return this.width * this.length;
+        }
+
+
+        chuVi() {
+            return (this.width + this.length) * 2;
+        }
+
+        display() {
+            return "Chiều rộng là: " + this.width + "</br>Chiều dài là: " + this.length
+        }
+
+        draw(ctx, x, y) {
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(x, y, this.width, this.length);
+        }
+    }
+
+    let rect = new Rectangle(100,200)
+    document.getElementById("dientich").innerHTML = "Diện tích: " + rect.DienTich()
+    document.getElementById("chuvi").innerHTML = "Chu vi: " + rect.chuVi()
+    document.getElementById("caccanh").innerHTML = rect.display()
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    rect.draw(ctx, 50, 50);
+</script>
+</body>
+</html>
